@@ -24,6 +24,8 @@ namespace CalcRevision
             CalculatorForm nextform = new CalculatorForm();
             this.Hide();
             nextform.Show();
+            this.Close();
+            this.Dispose();
         }
 
         private void EnterButton_Click(object sender, EventArgs e)
