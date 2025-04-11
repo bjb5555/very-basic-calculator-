@@ -24,6 +24,8 @@ namespace CalcRevision
             CalculatorForm nextform = new CalculatorForm();
             this.Hide();
             nextform.Show();
+            this.Close();
+            this.Dispose();
         }
 
         private async void DiceButton_Click(object sender, EventArgs e)

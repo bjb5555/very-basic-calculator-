@@ -59,6 +59,12 @@ namespace CalcRevision
             get { return previousAnswer; }
             set { previousAnswer = value; }
         }
+        //Idea for another button?
+        public double SaveAnswerA
+        {
+            get { return SaveAnswerA; }
+            set { SaveAnswerA = value; }
+        }
 
         public void Addition()
         {
@@ -182,32 +188,70 @@ namespace CalcRevision
                 answer = 6;
             }
         }
-        public void ReplacePi()
+        public void ReplacePiErrored()
         {
-            //check later
+            //Searches for pi
             if (SplitEquation.Contains("π"))
             {
+                //Makes a new stringbuilder
                 var stringBuilder = new System.Text.StringBuilder();
+                //makes clone of SplitEquation
                 var splitEquation = SplitEquation;
-
+//Searches splitEquation
                 foreach (var item in splitEquation)
                 {
+                    //I see no point in this step. Not here at least.
                     stringBuilder.Append(item);
                 }
 
                 int result;
+                //okay - Not too sure on my theory here - but: I believe this reads the whole equation and thus discards it.
                 if (int.TryParse(stringBuilder.ToString(), out result))
                 {
+                    //PI to 5dp?
                     stringBuilder.Replace("π", Math.PI.ToString(" F5 "));
+                    //Unsure.
                     SplitEquation.Add(Convert.ToString(stringBuilder));
                 }
                 else
                 {
-
+//throw appropriate error
                 }
 
                 //stringBuilder.Replace("π", Math.PI.ToString(" F5 "));
                 //SplitEquation.Add(Convert.ToString(stringBuilder));
+            }
+        }
+        ///<summary>
+        ///Searches equation for pi - replaces it with appropriate value
+        ///</summary>
+        public void ReplacePi()
+        {
+            //Searches for pi
+            if (SplitEquation.Contains("π"))
+            {
+                //Makes a new stringbuilder
+                var stringBuilder = new System.Text.StringBuilder();
+                //makes clone of SplitEquation
+                var splitEquation = SplitEquation;
+//Searches splitEquation
+                foreach (var item in splitEquation)
+                {
+                    //Checks if Pi
+                    if(item == "π")
+                    {
+                        //If so: Appends using actual Pi to 5d.p.
+                        stringBuilder.Append(Math.PI.ToString(" F5 "));
+                    }
+                    else
+                    {
+                        //If not: Appends with whatever this is
+                        stringBuilder.Append(item);
+                    }                    
+                }
+                //I WOULD advise checking this though.
+                SplitEquation.Add(Convert.ToString(stringBuilder));
+                //I believe this should work?
             }
         }
     }
