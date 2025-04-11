@@ -1,4 +1,5 @@
-﻿using System;
+//As an edit note...why...? It wastes SO much resources.
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -286,6 +287,8 @@ namespace CalcRevision
             PythagForm nextForm = new PythagForm();
             this.Hide();
             nextForm.Show();
+            this.Close();
+            this.Dispose();
         }
 
         private void DicePic_Click(object sender, EventArgs e)
@@ -293,6 +296,9 @@ namespace CalcRevision
             DiceForm nextform = new DiceForm();
             this.Hide();
             nextform.Show();
+            this.Close();
+            this.Dispose();
+            
         }
     }
 }
